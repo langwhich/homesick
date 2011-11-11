@@ -24,11 +24,9 @@ For all:
 Now you are ready to go! You can clone the code of this repository and
 get it running with the following command:
 
-    homesick clone tbpro/homesick-deb
-    homesick symlink homesick-deb
+    homesick clone tbpro/homesick-deb && homesick symlink tbpro/homesick-deb
 
 That's all, it's time to start a new shell! To update scripts from the
 repository use these commands:
 
-    homesick pull homesick-deb
-    homesick symlink homesick-deb
+    homesick pull tbpro/homesick-deb && homesick symlink tbpro/homesick-deb
