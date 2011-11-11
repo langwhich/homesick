@@ -6,10 +6,6 @@ PATH="/bin:/sbin:/usr/X11R6/bin"
 PATH="/usr/bin:/usr/sbin:${PATH}"
 PATH="/usr/local/bin:/usr/local/sbin/:${PATH}"
 
-<% if File.exists? '/usr/local/bin/brew' and `brew --prefix php` -%>
-PATH="<%= `brew --prefix php` %>/bin:${PATH}"
-<% end -%>
-
 PATH="~/.rbbld/bin:${PATH}"
 PATH="~/.rbenv/bin:${PATH}"
 

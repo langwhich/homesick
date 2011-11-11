@@ -19,7 +19,7 @@ For Debian:
 
 For all:
 
-    sudo gem install homesick pry
+    sudo gem install homesick pry git-up
 
 Now you are ready to go! You can clone the code of this repository and
 get it running with the following command:
@@ -30,3 +30,8 @@ That's all, it's time to start a new shell! To update scripts from the
 repository use these commands:
 
     homesick pull tbpro/homesick-deb && homesick symlink tbpro/homesick-deb
+
+Currently there is no installation for rbenv and ruby-build, you've got
+to trigger the update command manually:
+
+    rbenv-update

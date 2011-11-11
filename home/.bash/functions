@@ -1,17 +1,39 @@
-function updatedotfiles {
-  pushd ~/.dotfiles > /dev/null
-  rake update:all
-  popd > /dev/null
-}
+function rbenv-update {
+  if [ -d ~/.rbbld ]; then
+    pushd ~/.rbbld > /dev/null
+    git-up
+    popd > /dev/null
+  else
+    git clone git://github.com/sstephenson/ruby-build.git ~/.rbbld
+  fi
 
-function updaterbenv {
-  pushd ~/.dotfiles > /dev/null
-  rake update:rbenv
-  popd > /dev/null
-}
+  if [ -d ~/.rbenv ]; then
+    pushd ~/.rbenv > /dev/null
+    git-up 
+    popd > /dev/null
+  else
+    git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+  fi
 
-function updaterbbld {
-  pushd ~/.dotfiles > /dev/null
-  rake update:rbbld
-  popd > /dev/null
+  local plugins = (
+    "sstephenson:rbenv-vars"
+    "jamis:rbenv-gemset"
+    "chriseppstein:rbenv-each"
+    "carsomyr:rbenv-bundler"
+  )
+
+  for plugin in ${plugins[@]}; do
+    local user=${plugin%%:*}
+    local name=${plugin#*:}
+
+    local root=~/.rbenv/plugins/$name
+
+    if [ -d $root ]; then
+      pushd $root > /dev/null
+      git-up
+      popd > /dev/null
+    else
+      git clone git://github.com/$user/$name.git $root
+    fi
+  done
 }
