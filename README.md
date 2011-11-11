@@ -9,7 +9,7 @@ Installation
 
 There are several pre-requisites needed before you install these package:
 
-    aptitude install git-core bash-completion
+    aptitude install git-core bash-completion curl
     sudo gem install homesick pry git-up
 
 Now you are ready to go! You can clone the code of this repository and
@@ -22,7 +22,7 @@ repository use these commands:
 
     homesick pull tbpro/homesick-deb && homesick symlink tbpro/homesick-deb
 
-Currently there is no installation for rbenv and ruby-build, you've got
-to trigger the update command manually:
+Currently there is no installation for rvm, you've got to trigger the install
+command manually:
 
-    rbenv-update
+    bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)

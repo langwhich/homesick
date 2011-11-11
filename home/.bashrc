@@ -5,15 +5,9 @@ fi
 PATH="/bin:/sbin:/usr/X11R6/bin"
 PATH="/usr/bin:/usr/sbin:${PATH}"
 PATH="/usr/local/bin:/usr/local/sbin/:${PATH}"
-
-PATH="$HOME/.rbbld/bin:${PATH}"
-PATH="$HOME/.rbenv/bin:${PATH}"
-
 export PATH
 
-if [ -d "${HOME}/.rbenv" ]; then
-  eval "$(rbenv init -)"
-fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source $HOME/.bash/config
 source $HOME/.bash/functions
