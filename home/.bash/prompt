@@ -8,23 +8,18 @@ function __git_parse_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ <\1>/"
 }
 
-function __rbe_version {
-  if [ ! -x ~/.rbenv/bin/rbenv ]; then
+function __rvm_version {
+  if [ ! -x $HOME/.rvm/bin/rvm ]; then
     echo "" && return
   fi
 
-  local version=`rbenv version-name`
-  local gemsets=`rbenv gemset active 2>&1`
+  local version=`rvm current`
 
-  if [ "x$version" == "xsystem" ]; then
+  if [ "$version" == "system" ]; then
     echo "" && return
   fi
 
-  if [ "$gemsets" == "no active gemsets" ]; then
-    echo " <$version>"
-  else
-    echo " <$version@$gemsets>"
-  fi
+  echo " <$version>"
 }
 
 bash_prompt() {
@@ -37,9 +32,9 @@ bash_prompt() {
   local D="\[\033[01;34m\]"
 
   if [[ ${EUID} == 0 ]] ; then
-    export PS1="\n$R\u$S@$H\h: $D\w\$(__rbe_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
+    export PS1="\n$R\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
   else
-    export PS1="\n$U\u$S@$H\h: $D\w\$(__rbe_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
+    export PS1="\n$U\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
   fi
 }
 
