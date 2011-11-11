@@ -2,6 +2,6 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
-for i in ~/.bash/completion.d/*; do
+for i in $HOME/.bash/completion.d/*; do
   source $i
 done

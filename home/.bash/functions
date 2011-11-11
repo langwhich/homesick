@@ -1,39 +1,39 @@
 function rbenv-update {
-  if [ -d ~/.rbbld ]; then
-    pushd ~/.rbbld > /dev/null
+  if [ -d $HOME/.rbbld ]; then
+    pushd $HOME/.rbbld > /dev/null
     git-up
     popd > /dev/null
   else
-    git clone git://github.com/sstephenson/ruby-build.git ~/.rbbld
+    git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbbld
   fi
 
-  if [ -d ~/.rbenv ]; then
-    pushd ~/.rbenv > /dev/null
+  if [ -d $HOME/.rbenv ]; then
+    pushd $HOME/.rbenv > /dev/null
     git-up 
     popd > /dev/null
   else
-    git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+    git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
   fi
 
-  local plugins = (
+  local PLUGINS=(
     "sstephenson:rbenv-vars"
     "jamis:rbenv-gemset"
     "chriseppstein:rbenv-each"
     "carsomyr:rbenv-bundler"
   )
 
-  for plugin in ${plugins[@]}; do
-    local user=${plugin%%:*}
-    local name=${plugin#*:}
+  for PLUGIN in ${PLUGINS[@]}; do
+    local PLUGUSER=${PLUGIN%%:*}
+    local PLUGNAME=${PLUGIN#*:}
 
-    local root=~/.rbenv/plugins/$name
+    local PLUGROOT=$HOME/.rbenv/plugins/$PLUGNAME
 
-    if [ -d $root ]; then
-      pushd $root > /dev/null
+    if [ -d $PLUGROOT ]; then
+      pushd $PLUGROOT > /dev/null
       git-up
       popd > /dev/null
     else
-      git clone git://github.com/$user/$name.git $root
+      git clone git://github.com/$PLUGUSER/$PLUGNAME.git $PLUGROOT
     fi
   done
 }
