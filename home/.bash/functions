@@ -1,0 +1,17 @@
+function updatedotfiles {
+  pushd ~/.dotfiles > /dev/null
+  rake update:all
+  popd > /dev/null
+}
+
+function updaterbenv {
+  pushd ~/.dotfiles > /dev/null
+  rake update:rbenv
+  popd > /dev/null
+}
+
+function updaterbbld {
+  pushd ~/.dotfiles > /dev/null
+  rake update:rbbld
+  popd > /dev/null
+}
