@@ -1,6 +1,6 @@
 alias netstat='sudo netstat -tulpen'
 alias screen='screen -U'
-alias irssi='screen -U -c $HOME/.irssi/screenrc -t irssi irssi'
+alias irssi='screen -U -c $HOME/.irssi/screenrc -S irssi irssi'
 
 alias ..='cd ..'
 alias ...='cd ../..'
