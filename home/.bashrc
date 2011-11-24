@@ -5,7 +5,6 @@ fi
 PATH="/bin:/sbin:/usr/X11R6/bin"
 PATH="/usr/bin:/usr/sbin:${PATH}"
 PATH="/usr/local/bin:/usr/local/sbin/:${PATH}"
-PATH="`brew --prefix php`/bin:${PATH}"
 export PATH
 
 if [ -d $HOME/.rbenv ]; then
