@@ -24,6 +24,7 @@ bind - resize -3
 msgminwait 0
 msgwait 5
 
+defutf8 on
 autodetach on
 startup_message off
 crlf off
