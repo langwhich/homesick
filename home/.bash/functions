@@ -1,3 +1,11 @@
+function title() {
+  PROMPT_COMMAND="echo -ne \"\033]0;$*\a\""
+}
+
+function pwdtitle() {
+  title "${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"
+}
+
 function rbenv-update {
   if [ $UID = 0 ]; then
     export RBENV_ROOT="/usr/local/rbenv"

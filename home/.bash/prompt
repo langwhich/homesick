@@ -41,6 +41,10 @@ bash_prompt() {
   else
     export PS1="\n$U\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
   fi
+
+  if [ "$TERM" = "xterm-256color" ]; then
+    pwdtitle
+  fi
 }
 
 bash_prompt
