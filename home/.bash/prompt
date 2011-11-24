@@ -9,7 +9,7 @@ function __git_parse_branch {
 }
 
 function __rvm_version {
-  if [ $RBENV_ROOT = "" ]; then
+  if [ "$RBENV_ROOT" = "" ]; then
     echo "" && return
   fi
 
