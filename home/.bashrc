@@ -7,17 +7,7 @@ PATH="/usr/bin:/usr/sbin:${PATH}"
 PATH="/usr/local/bin:/usr/local/sbin/:${PATH}"
 export PATH
 
-if [ -d $HOME/.rbenv ]; then
-  if [ $UID = 0 ]; then
-    export RBENV_ROOT="/usr/local/rbenv"
-  else
-    export RBENV_ROOT="$HOME/.rbenv"
-  fi
-  
-  export PATH="$RBENV_ROOT/bin:$PATH"
-
-  eval "$(rbenv init -)"
-fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source $HOME/.bash/config
 source $HOME/.bash/functions

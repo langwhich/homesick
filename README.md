@@ -22,5 +22,7 @@ repository use these commands:
 
     homesick pull tbpro/homesick-deb && homesick symlink tbpro/homesick-deb
 
-After your are logged in into your new shell you've got to execute the 
-`rbenv-update` command to setup the ruby version manager.
+Currently there is no installation for rvm, you've got to trigger the install
+command manually:
+
+    bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
