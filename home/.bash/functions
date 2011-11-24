@@ -1,23 +1,30 @@
 function rbenv-update {
-  if [ -d $HOME/.rbbld ]; then
-    pushd $HOME/.rbbld > /dev/null
-    git-up
-    popd > /dev/null
+  if [ $UID = 0 ]; then
+    export RBENV_ROOT="/usr/local/rbenv"
   else
-    git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbbld
+    export RBENV_ROOT="$HOME/.rbenv"
   fi
 
-  if [ -d $HOME/.rbenv ]; then
-    pushd $HOME/.rbenv > /dev/null
+  if [ -d $RBENV_ROOT ]; then
+    pushd $RBENV_ROOT > /dev/null
     git-up 
     popd > /dev/null
   else
-    git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
+    git clone git://github.com/sstephenson/rbenv.git $RBENV_ROOT
+  fi
+
+  if [ -d $RBENV_ROOT/plugins/rbenv-build ]; then
+    pushd $RBENV_ROOT/plugins/rbenv-build > /dev/null
+    git-up
+    popd > /dev/null
+  else
+    git clone git://github.com/sstephenson/ruby-build.git $RBENV_ROOT/plugins/rbenv-build
   fi
 
   local PLUGINS=(
     "sstephenson:rbenv-vars"
     "jamis:rbenv-gemset"
+    "Rodreegez:rbenv-only"
     "chriseppstein:rbenv-each"
     "carsomyr:rbenv-bundler"
   )
@@ -26,7 +33,7 @@ function rbenv-update {
     local PLUGUSER=${PLUGIN%%:*}
     local PLUGNAME=${PLUGIN#*:}
 
-    local PLUGROOT=$HOME/.rbenv/plugins/$PLUGNAME
+    local PLUGROOT=$RBENV_ROOT/plugins/$PLUGNAME
 
     if [ -d $PLUGROOT ]; then
       pushd $PLUGROOT > /dev/null

@@ -9,17 +9,22 @@ function __git_parse_branch {
 }
 
 function __rvm_version {
-  if [ ! -x $HOME/.rvm/bin/rvm ]; then
+  if [ $RBENV_ROOT = "" ]; then
     echo "" && return
   fi
 
-  local version=`rvm current`
+  local version=`rbenv version-name 2> /dev/null`
+  local gemsets=`rbenv gemset active 2> /dev/null`
 
   if [ "$version" == "system" ]; then
     echo "" && return
   fi
 
-  echo " <$version>"
+  if [ "$gemsets" = "" ]; then
+    echo " <$version>"
+  else
+    echo " <$version@$gemsets>"
+  fi
 }
 
 bash_prompt() {
