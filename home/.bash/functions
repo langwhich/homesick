@@ -5,3 +5,11 @@ function title() {
 function pwdtitle() {
   title "${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"
 }
+
+function rvmrc {
+  if [ $# != 1 ]; then
+    echo "Usage: rvmrc <version[@gemset]>"
+  fi
+  
+  rvm --create --rvmrc use $1
+}
