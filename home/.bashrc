@@ -2,9 +2,7 @@ if [ -z "$PS1" ]; then
   return
 fi
 
-PATH="/bin:/sbin:/usr/X11R6/bin"
-PATH="/usr/bin:/usr/sbin:${PATH}"
-PATH="/usr/local/bin:/usr/local/sbin/:${PATH}"
+PATH="${PATH}:/usr/X11R6/bin"
 export PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
