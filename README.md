@@ -9,7 +9,8 @@ Installation
 
 There are several pre-requisites needed before you install these package:
 
-    aptitude install git-core bash-completion curl
+    aptitude install git-core bash-completion curl ruby rubygems
+    sudo gem update --system
     sudo gem install homesick pry git-up
 
 Now you are ready to go! You can clone the code of this repository and
