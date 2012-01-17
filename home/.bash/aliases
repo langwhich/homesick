@@ -3,7 +3,7 @@ alias netstat='sudo netstat -tulpen'
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias rgrep='grep -R'
+alias rgrep='grep -Rn'
 alias history='fc -l 1'
 
 alias ls='ls --color=auto'

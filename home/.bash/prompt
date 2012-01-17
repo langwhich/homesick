@@ -1,7 +1,7 @@
 function __git_parse_dirty {
   [[ $(git status 2> /dev/null | tail -n1) == "" ]] && echo "o" && return
-  [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit (working directory clean)" ]] && printf "\033[32m✓\033[00m" && return
-  printf "\033[31m✗\033[00m"
+  [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit (working directory clean)" ]] && printf "\033[32mo\033[00m" && return
+  printf "\033[31mx\033[00m"
 }
 
 function __git_parse_branch {
