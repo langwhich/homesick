@@ -1,7 +1,3 @@
-if [ -z "$PS1" ]; then
-  return
-fi
-
 PATH="${PATH}:/usr/X11R6/bin"
 export PATH
 
