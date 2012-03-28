@@ -1,27 +1,9 @@
-function title() {
-  PROMPT_COMMAND="echo -ne \"\033]0;$*\a\""
-}
-
-function pwdtitle() {
-  title "${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"
-}
-
 function rvmrc {
   if [ $# != 1 ]; then
     echo "Usage: rvmrc <version[@gemset]>"
   fi
   
   rvm --create --rvmrc use $1
-}
-
-function git-trackall {
-  if [ ! -d .git ]; then
-    echo "Need to be in a repo root dir"
-  fi
-
-  for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do
-    git branch --track ${branch##*/} $branch
-  done
 }
 
 function cache_complete() {

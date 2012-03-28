@@ -4,7 +4,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias rgrep='grep -Rn'
-alias history='fc -l 1'
 
 alias ls='ls --color=auto'
 alias lsa='ls -lah'
