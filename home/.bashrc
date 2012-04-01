@@ -1,4 +1,4 @@
-PATH="${PATH}:/usr/X11R6/bin"
+PATH="${PATH}:/usr/X11R6/bin:/var/lib/gems/1.8/bin"
 export PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
