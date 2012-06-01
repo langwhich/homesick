@@ -32,9 +32,11 @@ bash_prompt() {
   local D="\[\033[01;34m\]"
 
   if [[ ${EUID} == 0 ]] ; then
-    export PS1="\n$R\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
+    #export PS1="\n$R\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
+    export PS1="\n$R\u$S@$H\h: $D\w\n<$D> # $NONE"
   else
-    export PS1="\n$U\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
+    #export PS1="\n$U\u$S@$H\h: $D\w\$(__rvm_version)\n<\$(__git_parse_dirty)$D>\$(__git_parse_branch) # $NONE"
+    export PS1="\n$U\u$S@$H\h: $D\w\n<o$D> # $NONE"
   fi
 }
 
